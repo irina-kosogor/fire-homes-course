@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from 'next/link';
+import Link from "next/link";
+import { AuthProvider } from "@/context/auth";
+import AuthButtons from "@/components/auth-buttons";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,7 +13,7 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-}); 
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,20 +30,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <nav className='bg-sky-950 text-white p-5 h-24 flex items-center justify-between'>
-          <Link href='/'>
-            Fire Homes
-          </Link>
-          <ul className='flex gap-6'>
-            <li>
-              <Link href="/login">Login</Link>
-            </li>
-            <li>
-              <Link href="/register">Signup</Link>
-            </li>
-          </ul>
-        </nav>
-        {children}
+        <AuthProvider>
+          <nav className="bg-sky-950 text-white p-5 h-24 flex items-center justify-between">
+            <Link href="/">Fire Homes</Link>
+            <AuthButtons />
+          </nav>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
