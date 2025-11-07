@@ -11,19 +11,22 @@ export default function AuthButtons() {
       {!!auth?.currentUser && (
         <>
           <div>{auth.currentUser.email}</div>
-          <div onClick={auth.logout} className='pointer'>Logout</div>
+          <div onClick={auth.logout} className="pointer">
+            Logout
+          </div>
         </>
       )}
 
       {!auth?.currentUser && (
-        <ul className="flex gap-6">
-          <li>
-            <Link href="/login">Login</Link>
-          </li>
-          <li>
-            <Link href="/register">Signup</Link>
-          </li>
-        </ul>
+        <div className="flex gap-2 items-center">
+          <Link href="/login" className="uppercase tracking-widest hover:underline">
+            Login
+          </Link>
+          <div className='h-8 w-[1px] bg-white/50'/>
+          <Link href="/register" className="uppercase tracking-widest hover:underline">
+            Signup
+          </Link>
+        </div>
       )}
     </div>
   );
