@@ -6,5 +6,9 @@ import { useAuth } from "@/context/auth";
 export default function ConinueWithGoogleButton() {
   const auth = useAuth();
 
-  return <Button onClick={auth?.loginWithGoogle}>Continue with Google</Button>;
+  return (
+    <Button onClick={auth?.loginWithGoogle} className="w-full">
+      Continue with Google
+    </Button>
+  );
 }
